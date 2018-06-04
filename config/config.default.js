@@ -20,7 +20,8 @@ module.exports = appInfo => {
     domainWhiteList: ['http://123.56.12.44:3001']
   }
   config.cors = {
-    credentials: true
+    credentials: true,
+    allowMethods:"GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS"
   }
 
   return config;
