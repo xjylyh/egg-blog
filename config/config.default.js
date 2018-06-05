@@ -12,7 +12,13 @@ module.exports = appInfo => {
   //它可以以对象的形式操作数据库
   config.mongoose = {
     client: {
-      url: 'mongodb://127.0.0.1/blog'
+      url: 'mongodb://127.0.0.1/blog',
+      options:{
+        server: {
+            auto_reconnect: true,
+            poolSize: 10
+        }
+      }
     }
   }
   config.security = {
