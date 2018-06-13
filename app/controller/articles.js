@@ -5,7 +5,7 @@ module.exports = class ArticlesController extends BaseController {
             //'Article', ['title', 'content'], ['category']
             await this.getPager({
                 modName: 'Article',
-                returnFields: ['title', 'content'],
+                fields: ['title', 'content'],
                 populateFields: ['category', 'user', 'comments.user']
             })
         } catch (error) {
@@ -16,8 +16,10 @@ module.exports = class ArticlesController extends BaseController {
         const { ctx } = this;
         let article = ctx.request.body;
         article.user = this.user;
+        console.log( this.user);
         try {
             article = await ctx.model.Article.create(article);
+            console.log(article,'发表成功');
             this.success('文章发表成功');
         } catch (error) {
             this.error(error);

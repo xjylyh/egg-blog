@@ -1,6 +1,7 @@
 const { Controller } = require('egg');
 module.exports = class BaseController extends Controller {
     get user() {
+        console.log('basebasebase '+JSON.stringify(this.ctx.session));
         return this.ctx.session.user;
     }
 
@@ -34,7 +35,6 @@ module.exports = class BaseController extends Controller {
         }
     }
     error(error) {
-        console.error(error);
         this.ctx.body = {
             code: 1,
             error: error.toString()
